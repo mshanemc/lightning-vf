@@ -6,7 +6,7 @@ sfdx force:package:install -r --package 04t6A000000SG0F -w 20
 sfdx force:apex:execute -f scripts/dataWipe.cls
 sfdx force:data:tree:import -p data/sample-data-plan.json
 
-sfdx force:source:push
+# sfdx force:source:push
 sfdx shane:user:password:set -l User -g User -p sfdx1234 --json
 
 sfdx force:org:open
