@@ -1,0 +1,72 @@
+<apex:page standardController="Order" extensions="BeforeExtensions">
+
+  <!-- Ensure the VF page has the following  -  window.location, lightningStylesheets = false,
+ some navigation with pageRef and a pageBlock section which displays a list of fields. -->
+
+  <style>
+    .warning-image {
+      max-width: 30px;
+      max-height: 30px;
+    }
+
+    .warning-message {
+      background-color: gold;
+      font-size: bigger;
+      font-weight: bold;
+    }
+
+    .warning-container {
+      padding: 1em;
+    }
+  </style>
+
+  <script>
+    function showGuidelines() {
+      var orderType = '{! Type}';
+      if (orderType == 'International') {
+        window.location = '/apex/guidelines';
+      }
+      else {
+        var accountId = '{! Order.Account.Id}';
+        window.location = '/' + accountId;
+      }
+    }
+
+  </script>
+
+  <div class="warning-container">
+    <div class="warning-message">
+      <img src="https://i.imgur.com/0M4C3v1.png" class="warning-image" />
+      <span>
+        <a onclick="javascript:showGuidelines();">
+          This is a sensitive order! Please read the guidelines on the Account before shipping.</a>
+      </span>
+    </div>
+  </div>
+
+
+  <apex:form>
+    <apex:pageBlock>
+
+      <apex:pageBlockSection title="Suggested Fields" columns="2">
+        <apex:repeat var="suggField" value="{! suggestedFields}">
+          <apex:inputField value="{! Order[suggField]}" />
+        </apex:repeat>
+      </apex:pageBlockSection>
+
+      <apex:pageBlockSection title="Frequently-Used Fields" columns="2">
+        <apex:repeat var="frequentField" value="{! frequentFields}">
+          <apex:inputField value="{! Order[frequentField]}" />
+        </apex:repeat>
+      </apex:pageBlockSection>
+
+      <apex:pageBlockButtons location="bottom">
+        <apex:commandButton action="{!save}" value="Save" />
+        <apex:commandButton action="{! getAccountEditPage }" value="Edit Account" />
+      </apex:pageBlockButtons>
+
+
+    </apex:pageBlock>
+  </apex:form>
+
+</apex:page>
