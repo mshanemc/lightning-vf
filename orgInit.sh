@@ -8,6 +8,7 @@ sfdx force:data:tree:import -p data/sample-data-plan.json
 
 sfdx force:source:push
 sfdx shane:user:password:set -l User -g User -p sfdx1234 --json
+sfdx force:apex:execute -f scripts/init.cls
 
 sfdx force:org:open
 sfdx shane:data:file:upload -f assets/Visualforce_Report_2018-09-06_02-25_PM.pdf -n "VisualforceReport"
