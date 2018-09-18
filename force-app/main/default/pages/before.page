@@ -8,13 +8,11 @@
       max-width: 30px;
       max-height: 30px;
     }
-
     .warning-message {
       background-color: gold;
       font-size: bigger;
       font-weight: bold;
     }
-
     .warning-container {
       padding: 1em;
     }
