@@ -1,5 +1,5 @@
 # sfdx force:org:create -f config/project-scratch-def.json -d 1 -s
-sfdx shane:org:create -f config/project-scratch-def.json -d 1 -s --json -u vf -o work.shop
+sfdx shane:org:create -f config/project-scratch-def.json -d 1 -s --json --userprefix vf -o work.shop
 
 sfdx force:package:install -r --package 04t6A000000SG0F -w 20
 
